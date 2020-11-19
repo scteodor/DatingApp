@@ -1,5 +1,5 @@
 import { BrowserModule, HammerGestureConfig, HAMMER_GESTURE_CONFIG } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import { NgModule, Pipe, PipeTransform } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -10,6 +10,9 @@ import { JwtModule } from '@auth0/angular-jwt';
 import { NgxGalleryModule } from '@kolkov/ngx-gallery';
 import { FileUploadModule } from 'ng2-file-upload';
 import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
+import { MomentModule } from 'ngx-moment';
+import { PaginationModule } from 'ngx-bootstrap/pagination';
+import { ButtonsModule } from 'ngx-bootstrap/buttons';
 
 import { AppComponent } from './app.component';
 import { NavComponent } from './nav/nav.component';
@@ -30,7 +33,6 @@ import { MemberEditResolver } from './_resolvers/member-edit.resolver';
 import { PreventUnsavedChanges } from './_guards/prevent-unsaved-changes.guard';
 import { PhotoEditorComponent } from './members/photo-editor/photo-editor.component';
 
-
 export function tokenGetter(): string {
   return localStorage.getItem('token');
 }
@@ -47,7 +49,7 @@ export function tokenGetter(): string {
     MemberCardComponent,
     MemberDetailComponent,
     MemberEditComponent,
-    PhotoEditorComponent,
+    PhotoEditorComponent
   ],
   imports: [
     BrowserModule,
@@ -60,7 +62,10 @@ export function tokenGetter(): string {
     RouterModule.forRoot(appRoutes),
     BsDatepickerModule.forRoot(),
     NgxGalleryModule,
+    PaginationModule.forRoot(),
+    ButtonsModule.forRoot(),
     FileUploadModule,
+    MomentModule,
     JwtModule.forRoot({
       config: {
         tokenGetter,
@@ -80,3 +85,5 @@ export function tokenGetter(): string {
   bootstrap: [AppComponent],
 })
 export class AppModule {}
+
+
