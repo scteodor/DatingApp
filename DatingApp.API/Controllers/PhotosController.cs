@@ -25,7 +25,7 @@ namespace DatingApp.API.Controllers
         private Cloudinary _cloudinary;
 
         public PhotosController(IDatingRepository repo, IMapper mapper,
-        IOptions<CloudinarySettings> cloudinaryConfig)
+            IOptions<CloudinarySettings> cloudinaryConfig)
         {
             _cloudinaryConfig = cloudinaryConfig;
             _mapper = mapper;
